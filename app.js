@@ -1,14 +1,29 @@
 const express = require('express');
+const songData = require('./songData');
+
 const app = express();
-const songData = require('./song');
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
 app.get('/:artist', (req, res) => {
-    let artist = songData.find((artist) => artist.name === artist.name);
+    let artist = parseInt(req.params.artist);
 
-    res.json(artist)
+    if(req.params.artist == '' || !req.params.artist) {
+        res.send('Invalid Artist');
+        return;
+    }
+    
+    songData.find((artist) => artist.name === artist.name);
+
+    res.json(artist);
+})
+
+app.get('/:cds', (req, res) => {
+    let cds = songData.find((album) => album.album === album.album)
+
+    res.json(album);
 })
 
 
