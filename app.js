@@ -15,4 +15,4 @@ app.get('/:artist', (req, res) => {
 
 app.listen(3000, () => {
     console.log('DoomsDay Device is Active')
-})
+});
